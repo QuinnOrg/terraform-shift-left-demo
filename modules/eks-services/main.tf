@@ -69,7 +69,7 @@ resource "helm_release" "wiz_k8s_integration_argocd" {
                   imageIntegrityWebhook:
                     enabled: true
                     policies:
-                    - Justin Image Trust
+                    - justin-image-trust
 
                   kubernetesAuditLogsWebhook:
                     enabled: ${var.use_wiz_k8s_audit_logs}
