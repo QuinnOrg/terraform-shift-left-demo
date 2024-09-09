@@ -28,6 +28,8 @@ module "eks_services" {
   use_wiz_admission_controller      = var.use_wiz_admission_controller
   wiz_admission_controller_mode     = var.wiz_admission_controller_mode
   wiz_admission_controller_policies = var.wiz_admission_controller_policies
+  use_wiz_image_trust               = var.use_wiz_image_trust
+  wiz_image_trust_policies          = var.wiz_image_trust_policies
   use_wiz_k8s_audit_logs            = var.use_wiz_k8s_audit_logs
 
   use_wiz_sensor           = var.use_wiz_sensor

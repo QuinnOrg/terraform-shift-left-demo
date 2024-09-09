@@ -87,6 +87,11 @@ variable "wiz_admission_controller_policies" {
   default     = []
 }
 
+variable "wiz_image_trust_policies" {
+  type = list(string)
+  default = []
+}
+
 variable "wiz_k8s_integration_client_id" {
   type        = string
   description = "A string representing the Client ID for the Wiz Sensor service account."
@@ -115,6 +120,11 @@ variable "use_wiz_admission_controller" {
   type        = bool
   description = "A boolean representing whether or not to deploy the Wiz Admission Controller in the EKS cluster."
   default     = false
+}
+
+variable "use_wiz_image_trust" {
+  type    = bool
+  default = false
 }
 
 variable "use_wiz_k8s_audit_logs" {
