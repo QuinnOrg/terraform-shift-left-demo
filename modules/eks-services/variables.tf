@@ -76,6 +76,10 @@ variable "use_wiz_admission_controller" {
 variable "use_wiz_image_trust" {
   type    = bool
   default = false
+  validation {
+    condition     = !(var.use_wiz_image_trust && !var.use_wiz_admission_controller)
+    error_message = "use_wiz_image_trust can only be true if use_wiz_admission_controller is set to true."
+  }
 }
 
 variable "use_wiz_k8s_audit_logs" {

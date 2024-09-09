@@ -10,9 +10,11 @@ module "default_shift_left_environment" {
   wiz_k8s_integration_client_secret = "85U2vFJoiguXcUd6MWPBRepNUPKBckYmhW7TTo8FJYY3whB9QvHYHzsoys1BnoR5"
 
   use_wiz_admission_controller = true
-  use_wiz_image_trust = true
+  
   wiz_admission_controller_mode = "AUDIT"
   wiz_admission_controller_policies = ["JustinQuinnACPolicy"]
+
+  use_wiz_image_trust = true
   wiz_image_trust_policies = ["justin-image-trust"]
 
   use_wiz_k8s_audit_logs = true
