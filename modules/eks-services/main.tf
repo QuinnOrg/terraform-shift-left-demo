@@ -67,7 +67,8 @@ resource "helm_release" "wiz_k8s_integration_argocd" {
                     policies: ${jsonencode(var.wiz_admission_controller_policies)}
 
                   imageIntegrityWebhook:
-                    enabled: true
+                    enabled: ${var.use_wiz_image_trust}
+                    policies: ${jsonencode(var.wiz_image_trust_policies)}
 
                   kubernetesAuditLogsWebhook:
                     enabled: ${var.use_wiz_k8s_audit_logs}
