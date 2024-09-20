@@ -19,7 +19,7 @@ module "default_shift_left_environment" {
 
   use_wiz_k8s_audit_logs = true
 
-  use_wiz_sensor           = false
+  use_wiz_sensor           = true
   wiz_sensor_pull_username = "wizio-repo-b1af0ff4-f15b-46f0-aa77-d928f254babe"
   wiz_sensor_pull_password = "1mKRv3oL/kIMWl+ygFJBWvpc6ch50owxKS9satjfZd+ACRAkz79n"
 }
