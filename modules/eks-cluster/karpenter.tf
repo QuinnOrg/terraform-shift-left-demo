@@ -95,7 +95,7 @@ resource "kubectl_manifest" "karpenter_node_pool" {
               values: ["linux"]
             - key: karpenter.sh/capacity-type
               operator: In
-              values: ["spot"]
+              values: ["spot", "on-demand"]
             - key: "karpenter.k8s.aws/instance-category"
               operator: In
               values: ["c", "m", "r"]
@@ -103,7 +103,8 @@ resource "kubectl_manifest" "karpenter_node_pool" {
               operator: Gt
               values: ["2"]
       limits:
-        cpu: 5000
+        cpu: 15000
+        pods: 9
       disruption:
         consolidationPolicy: WhenEmpty
         consolidateAfter: 30s
