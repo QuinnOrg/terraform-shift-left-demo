@@ -103,9 +103,9 @@ resource "kubectl_manifest" "karpenter_node_pool" {
               operator: Gt
               values: ["2"]
       limits:
-        cpu: 1000
+        cpu: 2000
       disruption:
-        consolidationPolicy: Adaptive # This was WhenEmpty
+        consolidationPolicy: WhenEmpty
         consolidateAfter: 30s
   YAML
 
