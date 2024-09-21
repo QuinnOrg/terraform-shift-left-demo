@@ -105,7 +105,7 @@ resource "kubectl_manifest" "karpenter_node_pool" {
       limits:
         cpu: 1000
       disruption:
-        consolidationPolicy: WhenEmpty
+        consolidationPolicy: Adaptive # This was WhenEmpty
         consolidateAfter: 30s
   YAML
 
