@@ -114,22 +114,3 @@ resource "kubectl_manifest" "karpenter_node_pool" {
     kubectl_manifest.karpenter_node_class
   ]
 }
-
-resource "kubectl_manifest" "karpenter_provisioner" {
-  yaml_body = <<-YAML
-    apiVersion: karpenter.sh/v1alpha5
-    kind: Provisioner
-    metadata:
-      name: default
-    spec:
-      limits:
-        resources:
-          cpu: 1000
-          memory: 1000Gi
-          pods: 9  # Set maximum pods per node
-  YAML
-
-  depends_on = [
-    helm_release.karpenter
-  ]
-}
