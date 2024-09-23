@@ -104,7 +104,6 @@ resource "kubectl_manifest" "karpenter_node_pool" {
               values: ["2"]
       limits:
         cpu: 15000
-        pods: 9
       disruption:
         consolidationPolicy: WhenEmpty
         consolidateAfter: 30s
