@@ -95,7 +95,7 @@ resource "kubectl_manifest" "karpenter_node_pool" {
               values: ["linux"]
             - key: karpenter.sh/capacity-type
               operator: In
-              values: ["spot", "on-demand"]
+              values: ["spot"]
             - key: "karpenter.k8s.aws/instance-category"
               operator: In
               values: ["c", "m", "r"]
@@ -103,7 +103,8 @@ resource "kubectl_manifest" "karpenter_node_pool" {
               operator: Gt
               values: ["2"]
       limits:
-        cpu: 15000
+        cpu: 1000
+        pods: 9
       disruption:
         consolidationPolicy: WhenEmpty
         consolidateAfter: 30s
@@ -111,5 +112,24 @@ resource "kubectl_manifest" "karpenter_node_pool" {
 
   depends_on = [
     kubectl_manifest.karpenter_node_class
+  ]
+}
+
+resource "kubectl_manifest" "karpenter_provisioner" {
+  yaml_body = <<-YAML
+    apiVersion: karpenter.sh/v1alpha5
+    kind: Provisioner
+    metadata:
+      name: default
+    spec:
+      limits:
+        resources:
+          cpu: 1000
+          memory: 1000Gi
+          pods: 9  # Set maximum pods per node
+  YAML
+
+  depends_on = [
+    helm_release.karpenter
   ]
 }
