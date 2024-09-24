@@ -79,3 +79,12 @@ resource "kubectl_manifest" "argo_cd_application" {
     time_sleep.argo_wait
   ]
 }
+
+resource "kubernetes_priority_class" "high-priority" {
+  metadata {
+    name = "high-priority"
+  }
+
+  value = 100000
+  global_default = false
+}
